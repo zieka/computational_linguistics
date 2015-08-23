@@ -11,12 +11,22 @@
 #
 library(shiny)
 library(ggvis)
+
 shinyUI(fluidPage(
-
+  
+  headerPanel("Text Prediction"),
+  h4('By Kyle Scully'),
+  
+  sidebarPanel(
+  p('Enter a phrase into the box on the right and the application will suggest the next word')
+  ),
+  mainPanel(
   # Copy the line below to make a text input box
-  textInput("text", label = h3("Input your phrase here:"), value = "Enter text..."),
+  textInput("text", label = h3("Input your phrase here:")),
 
+  
+  
   hr(),
   fluidRow(column(7, verbatimTextOutput("value")))
-
+)
 ))
