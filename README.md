@@ -4,8 +4,8 @@
 This is a shiny application that uses an n-gram algorithm to predict then next word of a give string.
 
 For more information: 
-http://rpubs.com/zieka/text_prediction
-http://rpubs.com/zieka/milestone_report
+* http://rpubs.com/zieka/text_prediction
+* http://rpubs.com/zieka/milestone_report
 
 ### How to use:
 Do one of the following:
