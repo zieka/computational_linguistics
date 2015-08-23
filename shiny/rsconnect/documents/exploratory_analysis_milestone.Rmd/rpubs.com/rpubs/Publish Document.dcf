@@ -1,0 +1,7 @@
+name: Publish Document
+account: rpubs
+server: rpubs.com
+bundleId:
+        https://api.rpubs.com/api/v1/document/96578/ecc8f6bea989494aa1cc4d358ef7da3f
+url: http://rpubs.com/zieka/96578
+when: 1438028798.68988
