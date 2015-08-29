@@ -1,6 +1,7 @@
 load("bigram.w.Rda")
 load("trigram.w.Rda")
 load("quadgram.w.Rda")
+load("hectagram.w.Rda")
 
 library(tm)
 library(SnowballC)

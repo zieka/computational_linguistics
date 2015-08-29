@@ -20,6 +20,13 @@ shinyServer(function(input, output) {
   phrase <- strsplit(phrase, '[ \t]+')
   prediction = "NA"
   
+  if (length(phrase[[1]]) >= 4 ){
+    gram4 <- phrase[[1]][length(phrase[[1]])-3]
+    gram3 <- phrase[[1]][length(phrase[[1]])-2]
+    gram2 <- phrase[[1]][length(phrase[[1]])-1]
+    gram1 <- phrase[[1]][length(phrase[[1]])]
+    prediction <- nextword(paste(gram4, gram3, gram2, gram1),4)  	
+  } 
   if (length(phrase[[1]]) >= 3 ){
   	gram3 <- phrase[[1]][length(phrase[[1]])-2]
   	gram2 <- phrase[[1]][length(phrase[[1]])-1]

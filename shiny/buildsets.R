@@ -27,13 +27,13 @@ tweets <- readLines("../final/en_US/en_US.twitter.txt")
 
 #Sample
 
-blogs.index <- sample(1:899288, 45000)
+blogs.index <- sample(1:899288, 90000)
 blogs.training <- blogs[blogs.index]; rm(blogs.index); rm(blogs)
 
-news.index <- sample(1:1010242, 50000)
+news.index <- sample(1:1010242, 100000)
 news.training <- news[news.index]; rm(news.index); rm(news)
 
-tweets.index <- sample(1:2360148, 118000)
+tweets.index <- sample(1:2360148, 236000)
 tweets.training <- tweets[tweets.index]; rm(tweets.index); rm(tweets)
 
 
@@ -59,6 +59,7 @@ tdm <- TermDocumentMatrix(txt.corpus, control = list(tokenize = Tokenizer))
 freq <- sort(row_sums(tdm, na.rm=TRUE), decreasing=TRUE)
 word <- names(freq)
 bigram.w <- data.table(word=word, freq=freq)
+bigram.w <- bigram.w[bigram.w$freq > 1]
 
 save(bigram.w, file="bigram.w.Rda")
 
@@ -69,6 +70,7 @@ tdm <- TermDocumentMatrix(txt.corpus, control = list(tokenize = Tokenizer))
 freq <- sort(row_sums(tdm, na.rm=TRUE), decreasing=TRUE)
 word <- names(freq)
 trigram.w <- data.table(word=word, freq=freq)
+trigram.w <- trigram.w[trigram.w$freq > 1]
 
 save(trigram.w,file="trigram.w.Rda")
 
@@ -79,8 +81,20 @@ tdm <- TermDocumentMatrix(txt.corpus, control = list(tokenize = Tokenizer))
 freq <- sort(row_sums(tdm, na.rm=TRUE), decreasing=TRUE)
 word <- names(freq)
 quadgram.w <- data.table(word=word, freq=freq)
+quadgram.w <- quadgram.w[quadgram.w$freq > 1]
 
 save(quadgram.w,file="quadgram.w.Rda")
+
+#hectagram
+Tokenizer <- function(x) {RWeka::NGramTokenizer(x, RWeka::Weka_control(min = 5, max = 5))}
+tdm <- TermDocumentMatrix(txt.corpus, control = list(tokenize = Tokenizer))
+
+freq <- sort(row_sums(tdm, na.rm=TRUE), decreasing=TRUE)
+word <- names(freq)
+hectagram.w <- data.table(word=word, freq=freq)
+hectagram.w <- hectagram.w[hectagram.w$freq > 2]
+
+save(hectagram.w,file="hectagram.w.Rda")
 
 #tri -without
 #txt.corpus <- tm_map(txt.corpus, removeWords, stopwords(kind = "en"))

@@ -23,7 +23,7 @@ shinyUI(fluidPage(
   mainPanel(
   # Copy the line below to make a text input box
   textInput("text", label = h3("Input your phrase here:")),
-  submitButton("Submit"),
+  #submitButton("Submit"),
 
   
   

@@ -26,6 +26,15 @@ nextword <- function(string, size){
   
   regex <- paste("^",phrase,sep="")
   
+  if(size == 4){
+    prediction <- strsplit(hectagram.w[grep(regex,hectagram.w$word),][1]$word, " ")[[1]][5]
+    if(is.na(prediction)){
+      size <- 3
+      phrase <- gsub("^[a-z]+ ","",phrase)
+      regex <- paste("^",phrase,sep="")
+    }
+  }
+  
   if(size == 3){
     prediction <- strsplit(quadgram.w[grep(regex,quadgram.w$word),][1]$word, " ")[[1]][4]
     if(is.na(prediction)){
